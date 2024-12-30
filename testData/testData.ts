@@ -43,7 +43,7 @@ export default {
       'Sauce Labs Backpack', 'Sauce Labs Bike Light',  'Sauce Labs Bolt T-Shirt', 
       'Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Test.allTheThings() T-Shirt (Red)'
     ],
-
+    
     productsPrice: ['29.99', '9.99'],
 
     // Other data

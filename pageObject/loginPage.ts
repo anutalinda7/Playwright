@@ -1,5 +1,4 @@
-import { Locator, expect } from "@playwright/test";
-import { Timeout } from "../utils/enums";
+import { expect } from "@playwright/test";
 import { BasePage } from "./basePage";
 import data from "../testData/testData"
 
@@ -18,7 +17,7 @@ export class LoginPage extends BasePage {
     }
     
     async typeUsername(usr: string): Promise<void>{
-        const usernameInput = await this.getElement('[data-test="username"]');
+        const usernameInput = await this.getElement(this.usrLoginPage);
         await usernameInput.fill(usr);
     }
 
