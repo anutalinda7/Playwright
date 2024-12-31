@@ -32,7 +32,7 @@ export class ProductBrowsing extends LoginPage{
         await expect(element).toHaveCount(expectedLength)
       };
       
-      async verifyProductsInfBrowsingPage() {
+      async verifyProductsInfBrowsingPage(): Promise<void> {
         const products = await this.getElement(this.productItem);
         const count = await products.count();
 
@@ -43,7 +43,7 @@ export class ProductBrowsing extends LoginPage{
         }
       }
       
-    async verifyProductsOrder (expectOrder: string[]) {
+    async verifyProductsOrder (expectOrder: string[]): Promise<void> {
         const elements = await this.getElement(this.productItem);
         for (let i = 0; i < expectOrder.length; i++) {
             const name = await elements.nth(i).locator(this.itemName).textContent();
@@ -51,12 +51,12 @@ export class ProductBrowsing extends LoginPage{
         }
       }; 
       
-    async goToProductDetailsPage (index: number) {
+    async goToProductDetailsPage (index: number): Promise<void> {
         const element = await this.getElement(this.itemName);
         await element.nth(index).click();
     };
       
-    async verifyProductDetails () {
+    async verifyProductDetails(): Promise<void> {
         const products = await this.getElement(this.productDetailsName)
         const count = await products.count();
 
@@ -67,20 +67,20 @@ export class ProductBrowsing extends LoginPage{
         } 
       };
       
-    async addProductToCartAndVerify (text: string, url: string) {
+    async addProductToCartAndVerify(text: string, url: string): Promise<void> {
         await expect( await this.getElement(this.productDetailsImg)).toBeVisible();
         await (await this.getElement(this.addToCartBtnFromDetails)).click();
         await expect(await this.getElement(this.removeBtnFromDetails)).toHaveText(text);
         await (await this.getElement(this.goToCartBtn)).click();
         await expect(this.page).toHaveURL(new RegExp(url));
-        this.verifyProductDetails();
+        await this.verifyProductDetails();
       };
       
-    async selectSortOption (option: string) {
+    async selectSortOption(option: string): Promise<void> {
         await (await this.getElement(this.sortContainer)).selectOption(option);
       };
       
-      async verifySortingOrder(option: string) {
+      async verifySortingOrder(option: string): Promise<void> {
         await this.selectSortOption(option);
         if (option === this.selectAZ || option === this.selectZA) {
           const reverse = option === this.selectZA;
@@ -97,7 +97,7 @@ export class ProductBrowsing extends LoginPage{
         }
       }
 
-    async clickAllItemsSidebar () {
+    async clickAllItemsSidebar(): Promise<void> {
           await (await this.getElement(this.allItemsSidebar)).click();
       };
 }

@@ -6,7 +6,7 @@ export class LoginPage extends BasePage {
     private readonly usrLoginPage = '[data-test=username]';
     private readonly pwdLoginPage = '[data-test=password]';
     private readonly loginBtn = '[data-test=login-button]';
-    private readonly errorMsg = '[data-test="error"]';
+    protected readonly errorMsg = '[data-test="error"]';
     private readonly deleteErrorMsgIcon = '[data-test=error-button]';
     private readonly menuBtn = '#react-burger-menu-btn';
     private readonly logoutSidebar = '[data-test=logout-sidebar-link]';
@@ -28,7 +28,7 @@ export class LoginPage extends BasePage {
 
     async verifyPwdMasking(): Promise<void> {
         const element = this.getElement(this.pwdLoginPage);
-        const typeAttr = (await element).getAttribute('type');
+        const typeAttr = await (await element).getAttribute('type');
         expect(typeAttr).toBe('password');
     }
   
@@ -40,7 +40,7 @@ export class LoginPage extends BasePage {
 
     }
 
-    async visitSauceDemoInventoryPage (usr: string, pwd: string, url:string) {
+    async visitSauceDemoInventoryPage (usr: string, pwd: string, url:string): Promise<void> {
         this.login(usr, pwd);
         const currentUrl = this.page.url();
         expect(currentUrl).toContain(url)
@@ -70,7 +70,7 @@ export class LoginPage extends BasePage {
         await expect(element).not.toBeVisible();
     }
 
-    async clickMenuBtn() {
+    async clickMenuBtn(): Promise<void> {
         const element = await this.getElement(this.menuBtn);
         await element.click();
       };

@@ -18,9 +18,9 @@ export class CartFunctionality extends ProductBrowsing {
   };
   
   async addBackpackAndBikeToCart(txt: string): Promise<void> {
-    this.addBackpackToCart(txt);
+    await this.addBackpackToCart(txt);
     await this.page.waitForTimeout(2000); 
-    this.addBikeToCart(txt);
+    await this.addBikeToCart(txt);
     await this.page.waitForTimeout(2000); 
   };
   

@@ -5,7 +5,7 @@ import { LoginPage } from "../pageObject/loginPage"
 import { CartFunctionality } from "../pageObject/cartFunctionalityPage"
 
 
-describe("Product Browsing and Selection", async () => {
+describe("Shopping Cart Functionality", async () => {
   let testCaseNr = 1;
 
   test(`TC ${testCaseNr++}: Verify Adding Products to Cart`, async ({ page }) => {
