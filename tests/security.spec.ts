@@ -71,7 +71,6 @@ describe("Security", async () => {
         test(`TC ${testCaseNr++}: Check for a 404 Error for Invalid URL ${eachUrl}`, async ({ page }) => {
             const response = await page.request.get(eachUrl, { failOnStatusCode: false });
             expect(response.status()).toBe(404);
-
         });
     })
 })
